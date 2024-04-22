@@ -72,7 +72,7 @@ const Login = () => {
                         <input
                             type="email"
                             name="email"
-                            placeholder="Email@example.com"
+                            placeholder="Email@gmail.com"
                             {...register("email", {
                                 required: {
                                     value: true,

@@ -49,7 +49,7 @@ const Applicant = () => {
                             <th>Job Position</th>
                             <th>Company</th>
                             <th>Status</th>
-                            {/* <th>actions</th> */}
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -62,12 +62,7 @@ const Applicant = () => {
                                     <td>{job?.jobId?.position}</td>
                                     <td>{job?.jobId?.company}</td>
                                     <td>{job?.status}</td>
-                                    {/* <td className="action-row">
-                                    {job?.status === "accepted" && (
-                                        <ScheduleInterview job={job}/>
-   
-)}
-                                    </td> */}
+                                   
                                 </tr>
                             );
                         })}

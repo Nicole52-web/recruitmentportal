@@ -28,7 +28,7 @@ const StatusInterview = () => {
                 
             </div>
             <div className="content-row">
-                <div>If scheduled await further communication in your Email</div>
+                <div>Interview  Details will be sent to your email by the company</div>
                 <table className="table" id="interviews-table">
                     <thead>
                         <tr>

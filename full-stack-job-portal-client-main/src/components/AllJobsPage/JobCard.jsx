@@ -21,6 +21,23 @@ const JobCard = ({ job }) => {
     const { user } = useUserContext();
 
     const handleApply = async (id) => {
+        let currentDate = dayjs();
+    if (dayjs(job?.jobDeadline).isBefore(currentDate)){
+        Swal.fire({
+            icon:"error",
+            title:"oops",
+            text:"Job application deadline has passed"
+        })
+        return;
+    }
+        if (job?.jobStatus === "closed"){
+            Swal.fire({
+                icon:"error",
+                title:"oops",
+                text:"Job is closed"
+            })
+            return;
+        }
         if (window.confirm("Do you wish to update resume to match the job?")) {
             window.location.href= `/dashboard/edit-profile/${id}`;
             return;
@@ -30,8 +47,9 @@ const JobCard = ({ job }) => {
             alert("Please add Resume Link  to apply")
             return;
         }
-        let currentDate = new Date();
-        let date = currentDate.toISOString().slice(0, 10);
+        
+        let date = currentDate.format('YYYY-MM-DD');
+        // let date = currentDate.toISOString().slice(0, 10);
         const appliedJob = {
             applicantId: user?._id,
             recruiterId: job?.createdBy,
