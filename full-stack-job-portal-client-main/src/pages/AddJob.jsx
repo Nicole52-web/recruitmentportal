@@ -35,7 +35,9 @@ const AddJob = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
+        // Setting loading status to true
         setIsLoading(true);
+        // Creating new job object from form data
         const newJob = {
             company: data?.company,
             position: data?.position,
@@ -67,6 +69,7 @@ const AddJob = () => {
                 text: response?.data?.message,
             });
 
+            // Resetting form and state variables
             reset();
             setDeadline(new Date());
             setSkills([]);
@@ -80,6 +83,8 @@ const AddJob = () => {
                 text: error?.response?.data,
             });
         }
+
+        // Setting loading status to false
         setIsLoading(false);
     };
 

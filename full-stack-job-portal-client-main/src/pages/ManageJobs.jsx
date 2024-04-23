@@ -32,6 +32,7 @@ const ManageJobs = () => {
             ),
     });
 
+    // Function to show delete confirmation modal
     const deleteModal = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -48,6 +49,7 @@ const ManageJobs = () => {
         });
     };
 
+     // Function to handle job deletion
     const deleteJobHandler = async (id) => {
         try {
             const response = await axios.delete(
@@ -75,6 +77,7 @@ const ManageJobs = () => {
         }
     };
 
+     // Function to handle PDF export
     const handleExportPDF = () => {
         const doc = new jsPDF();
         autoTable(doc, { html: "#jobs-table" });
@@ -83,6 +86,7 @@ const ManageJobs = () => {
 
     
 
+    // Checking if data is still loading
     if (isPending) {
         return <LoadingComTwo />;
     }
@@ -96,6 +100,8 @@ const ManageJobs = () => {
         );
     }
 
+
+    // Checking if jobs list is empty
     if (!jobs?.result?.length) {
         return (
             <h2 className="text-lg md:text-3xl font-bold text-red-600 text-center mt-12">

@@ -15,6 +15,7 @@ const Register = () => {
         watch,
         formState: { errors },
     } = useForm();
+    // State variables for password matching and loading status
     const [isPasswordMatched, setIsPasswordMatched] = useState({
         status: true,
         message: "",
@@ -26,6 +27,8 @@ const Register = () => {
         // password: A@1abcde
         const { username, email, password, confirmPassword } = data;
 
+
+        // Check if passwords match
         if (password !== confirmPassword) {
             setIsPasswordMatched({
                 status: false,

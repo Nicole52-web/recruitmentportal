@@ -90,11 +90,7 @@ const UserLinks = [
         path: "status-interviews",
         icon: <GrScheduleNew />,
     },
-    // {
-    //     text: "Assesment Quiz",
-    //     path: "quiz",
-    //     icon: <MdQuiz />,
-    // },
+    
 ];
 
 export { AdminLinks, RecruiterLinks, UserLinks };

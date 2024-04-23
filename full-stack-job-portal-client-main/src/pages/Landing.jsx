@@ -5,18 +5,22 @@ import photo from "../assets/media/LandingPage/hero.png";
 import Navbar from "../components/shared/Navbar";
 import PopularCategory from "../components/Home Page/PopularCategory";
 import HowWorks from "../components/Home Page/HowWorks";
-import Team from "../components/Home Page/Team";
 import Brands from "../components/Home Page/Brands";
-import Testimonial from "../components/Home Page/Testimonial";
+
 
 const Landing = () => {
+    // References for the navbar and hero sections
     const navbarRef = useRef(null);
     const heroRef = useRef(null);
 
+
+    // Side effect to adjust the hero section's minimum height based on the navbar's height
     useEffect(() => {
         const navbarHeight = navbarRef.current.getBoundingClientRect().height;
         heroRef.current.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
     }, []);
+
+    // Render the landing page
     return (
         <>
             <Navbar navbarRef={navbarRef} />
@@ -47,8 +51,6 @@ const Landing = () => {
             <div>
             <PopularCategory/>
             <HowWorks/>
-            {/* <Team/> */}
-            {/* <Testimonial/> */}
             <Brands/>
             </div>
         </>

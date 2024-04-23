@@ -5,12 +5,15 @@ import styled from "styled-components";
 import JobCard from "./JobCard";
 
 const JobsListCom = () => {
+    // Destructuring jobLoading and jobs from job context
     const { jobLoading, jobs } = useJobContext();
 
+    // If jobs are still loading, display loading component
     if (jobLoading) {
         return <LoadingComTwo />;
     }
 
+     // If no jobs are found, display a message
     if (!jobs?.result?.length) {
         return (
             <h2 className="text-lg md:text-3xl text-center font-bold mt-24 text-red-600">
@@ -18,6 +21,8 @@ const JobsListCom = () => {
             </h2>
         );
     }
+
+    // If jobs are found, display the jobs
     return (
         <Wrapper>
             <h5 className="job-count">

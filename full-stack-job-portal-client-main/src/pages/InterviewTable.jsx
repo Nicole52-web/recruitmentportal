@@ -115,10 +115,7 @@ const InterviewTable = () => {
         document.body.removeChild(table);
     };
 
-    const handleExportCSV = () => {
-        console.log("Exporting as CSV...");
-        exportTableToCSV("interviews-table", "Interviews_Report");
-    };
+    
 
     // if (isPending) {
     //     return <LoadingComTwo />;
@@ -133,13 +130,13 @@ const InterviewTable = () => {
     //     );
     // }
 
-    // if (!interviews?.length) {
-    //     return (
-    //         <h2 className="text-lg md:text-3xl font-bold text-red-600 text-center mt-12">
-    //             -- Interviews List is Empty --
-    //         </h2>
-    //     );
-    // }
+    if (!interviews?.length) {
+        return (
+            <h2 className="text-lg md:text-3xl font-bold text-red-600 text-center mt-12">
+                -- Interviews List is Empty --
+            </h2>
+        );
+    }
     return (
         <Wrapper>
             <div className="title-row">
@@ -173,7 +170,7 @@ const InterviewTable = () => {
                     
                 </select>
                 <button className="bg-blue-500 text-white rounded px-4 py-2 m-2" onClick={handleExportMonthReport}>Export Month Report as PDF</button>
-    {/* <button className="bg-blue-500 text-white rounded px-4 py-2 m-2" onClick={handleExportCSV}>Export as CSV</button> */}
+   
 </div>
                 <table className="table" id="interviews-table">
                     <thead>

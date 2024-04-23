@@ -12,12 +12,15 @@ const LargeSidebar = () => {
         <Wrapper>
             <div
                 className={
+                     // If showSidebar is false, add the "show-sidebar" class to the div
+                    // Otherwise, only use the "sidebar-container" class
                     !showSidebar
                         ? "sidebar-container show-sidebar"
                         : "sidebar-container"
                 }
             >
                 <div className="profile">
+                    
                     <BiUserCircle className="text-5xl font-normal" />
                     <h6 className="text-sm font-semibold capitalize mt-1">
                         {user?.username}
@@ -27,6 +30,7 @@ const LargeSidebar = () => {
                     </p>
                 </div>
                 <div className="content">
+                    {/* This is a component that renders navigation links */}
                     <DashboardNavLinks />
                 </div>
             </div>

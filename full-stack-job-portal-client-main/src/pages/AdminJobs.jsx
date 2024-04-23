@@ -19,6 +19,8 @@ const AdminJobs = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [filteredJobs, setFilteredJobs] = useState([]);
     useEffect(() => {
+
+        // Fetch jobs
         const fetchJobs = async () => {
             setIsLoading(true);
             try {
@@ -35,84 +37,7 @@ const AdminJobs = () => {
         fetchJobs();
     }, []);
 
-    // const updateUserModal = (id, role) => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#19b74b",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes",
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             UpdateUserRole(id, role);
-    //         }
-    //     });
-    // };
-
-    // const UpdateUserRole = async (id, role) => {
-    //     const updateUser = { id, role };
-    //     try {
-    //         const response = await axios.patch(
-    //             `http://localhost:3000/api/v1/admin/update-role`,
-    //             updateUser,
-    //             { withCredentials: true }
-    //         );
-    //         refetch();
-    //         Swal.fire({
-    //             title: "Done!",
-    //             text: "Role Updated Successfully",
-    //             icon: "success",
-    //         });
-    //     } catch (error) {
-    //         console.log(error);
-    //         Swal.fire({
-    //             title: "Sorry!",
-    //             text: error?.response?.data,
-    //             icon: "error",
-    //         });
-    //     }
-    // };
-
-    // const deleteModal = (id) => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#19b74b",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!",
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             deleteUserHandler(id);
-    //         }
-    //     });
-    // };
-
-    // const deleteUserHandler = async (id) => {
-    //     try {
-    //         const response = await axios.delete(
-    //             `http://localhost:3000/api/v1/users/${id}`,
-    //             { withCredentials: true }
-    //         );
-
-    //         refetch();
-    //         Swal.fire({
-    //             title: "Deleted!",
-    //             text: "User has been deleted.",
-    //             icon: "success",
-    //         });
-    //     } catch (error) {
-    //         Swal.fire({
-    //             title: "Sorry!",
-    //             text: error?.message,
-    //             icon: "error",
-    //         });
-    //     }
-    // };
-
+    
     const handleMonthChange = (event) => {
         setSelectedMonth(event.target.value);
     };
@@ -178,12 +103,15 @@ const AdminJobs = () => {
         // Remove the temporary table
         document.body.removeChild(table);
     };
+
+    // Handler for exporting as PDF
     const handleExportPDF = () => {
         console.log("Exporting as PDF...");
         exportTableToPDF("users-table", "AllJobs_Report");
     };
 
 
+    // Update filtered jobs when jobs or search term changes
     useEffect(() => {
         if (jobs && jobs.jobs) {
             setFilteredJobs(
@@ -269,63 +197,6 @@ const AdminJobs = () => {
                                 <td>{job?.company}</td>
                                 <td>{job?.createdBy?.username}</td>
                                 <td>{new Date(job?.createdAt).toLocaleString()}</td>
-
-                                    <td className="action-row">
-                                        {/* {user?._id === me._id ? null : (
-                                            <>
-                                                {" "}
-                                                {user?.role ===
-                                                "admin" ? null : (
-                                                    <button
-                                                        className="action admin"
-                                                        onClick={() =>
-                                                            updateUserModal(
-                                                                user._id,
-                                                                "admin"
-                                                            )
-                                                        }
-                                                    >
-                                                        admin
-                                                    </button>
-                                                )}
-                                                {user?.role ===
-                                                "recruiter" ? null : (
-                                                    <button
-                                                        className="action recruiter"
-                                                        onClick={() =>
-                                                            updateUserModal(
-                                                                user._id,
-                                                                "recruiter"
-                                                            )
-                                                        }
-                                                    >
-                                                        recuiter
-                                                    </button>
-                                                )}
-                                                {user?.role ===
-                                                "user" ? null : (
-                                                    <button
-                                                        className="action user"
-                                                        onClick={() =>
-                                                            updateUserModal(
-                                                                user._id,
-                                                                "user"
-                                                            )
-                                                        }
-                                                    >
-                                                        user
-                                                    </button>
-                                                    
-                                                )}
-                                            </>
-                                        )}
-                                        <button
-                                            className="color-blue"
-                                            onClick={() => deleteModal(user._id)}
-                                        >
-                                            <MdDelete />
-                                        </button> */}
-                                    </td>
                                 </tr>
                             );
                         })}

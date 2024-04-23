@@ -22,6 +22,7 @@ const JobCard = ({ job }) => {
 
     const handleApply = async (id) => {
         let currentDate = dayjs();
+        //checking if job deadline has passed
     if (dayjs(job?.jobDeadline).isBefore(currentDate)){
         Swal.fire({
             icon:"error",
@@ -30,6 +31,7 @@ const JobCard = ({ job }) => {
         })
         return;
     }
+    //cheking if job status is closed
         if (job?.jobStatus === "closed"){
             Swal.fire({
                 icon:"error",
@@ -38,10 +40,12 @@ const JobCard = ({ job }) => {
             })
             return;
         }
+        //confirming resume update
         if (window.confirm("Do you wish to update resume to match the job?")) {
             window.location.href= `/dashboard/edit-profile/${id}`;
             return;
         }
+        //checking if user has a resume link
         if (!user?.resume){
             window.location.href= `/dashboard/edit-profile/${id}`;
             alert("Please add Resume Link  to apply")
@@ -50,6 +54,7 @@ const JobCard = ({ job }) => {
         
         let date = currentDate.format('YYYY-MM-DD');
         // let date = currentDate.toISOString().slice(0, 10);
+        //creating appliedJob object
         const appliedJob = {
             applicantId: user?._id,
             recruiterId: job?.createdBy,
@@ -58,6 +63,7 @@ const JobCard = ({ job }) => {
             dateOfApplication: date,
             resume: user?.resume || "",
         };
+        //sending post request to apply for job
         try {
             const response = await postHandler({
                 url: "http://localhost:3000/api/v1/application/apply",
@@ -85,6 +91,8 @@ const JobCard = ({ job }) => {
             }
         }
     };
+
+    //rendering JobCard component
     return (
         <Wrapper>
             <div className="card-container">
@@ -141,7 +149,7 @@ const JobCard = ({ job }) => {
         </Wrapper>
     );
 };
-
+//styled component wrapper
 const Wrapper = styled.div`
     width: 100%;
     height: 100%;

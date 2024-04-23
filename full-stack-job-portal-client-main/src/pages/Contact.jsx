@@ -6,13 +6,17 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const Contact = () => {
+  
+  //Create a reference for the form
     const form = useRef();
+     // Initialize form handling functions from useForm
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-
+// Function to send email
     const sendEmail = (e) => {
       e.preventDefault();
   
+       // Send form data using emailjs
       emailjs.sendForm('service_eyqibci', 'template_k6usi9c', form.current, 'pRxOgLuLic4MqmwCs')
         .then((result) => {
             console.log(result.text);

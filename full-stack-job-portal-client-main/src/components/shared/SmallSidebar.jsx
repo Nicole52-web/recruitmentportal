@@ -16,6 +16,7 @@ const SmallSidebar = () => {
                         ? "sidebar-container show-sidebar"
                         : "sidebar-container"
                 }
+                 // On click, toggle the showSidebar state
                 onClick={() => setShowSidebar(!showSidebar)}
             >
                 <div className={showSidebar ? "content show" : "content"}>

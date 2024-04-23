@@ -46,6 +46,8 @@ const EditProfile = () => {
         const { username, location, resume, gender } = data;
         const updateUser = { email: user?.email };
         try {
+
+              // Checking if the fields exist and adding them to the user object
             if (username) {
                 updateUser.username = username;
             }

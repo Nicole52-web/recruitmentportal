@@ -27,7 +27,7 @@ const AboutUs = () => {
                         <p className="text-sm text-gray-500">CEO & Founder</p>
                     </div>
                 </div>
-                {/* Repeat the above div for other team members */}
+               
             </div>
         </div>
         

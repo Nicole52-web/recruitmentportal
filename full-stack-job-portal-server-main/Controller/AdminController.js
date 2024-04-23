@@ -55,22 +55,6 @@ exports.monthlyInfo = async (req, res, next) => {
         { name: "closed", value: stats.closed || 0 },
     ];
 
-    // monthly
-    // let monthly_stats = await JobModel.aggregate([
-    //     { $match: { createdBy: new mongoose.Types.ObjectId(req.user._id) } },
-    //     {
-    //         $group: {
-    //             _id: {
-    //                 year: { $year: "$createdAt" },
-    //                 month: { $month: "$createdAt" },
-    //             },
-    //             count: { $sum: 1 },
-    //         },
-    //     },
-    //     { $sort: { "_id:year": -1, "_id.month": -1 } },
-    //     { $limit: 6 }, // how many return(last six month's value will return)
-    // ]);
-
     let monthly_stats = await JobModel.aggregate([
         {
             $group: {

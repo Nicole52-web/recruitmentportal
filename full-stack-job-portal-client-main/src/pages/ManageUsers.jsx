@@ -65,6 +65,7 @@ const ManageUsers = () => {
         }
     };
 
+    // Function to show delete confirmation modal
     const deleteModal = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -81,6 +82,7 @@ const ManageUsers = () => {
         });
     };
 
+    // Function to handle user deletion
     const deleteUserHandler = async (id) => {
         try {
             const response = await axios.delete(
@@ -160,7 +162,7 @@ document.body.removeChild(specificUsersTable);
 };
    
 
-
+// check if users list is still loading
     if (isPending) {
         return <LoadingComTwo />;
     }
@@ -168,6 +170,7 @@ document.body.removeChild(specificUsersTable);
         // console.log(users);
     }
 
+    //check if there are no users
     if (!users?.result?.length) {
         return (
             <h2 className="text-lg md:text-3xl font-bold text-red-600 text-center mt-12">

@@ -52,6 +52,7 @@ const Recruiter = () => {
         },
     });
 
+    //Handler for accepting application
     const handleAcceptStatus = (id, recruiterId) => {
         const newStatus = { recruiterId, status: "accepted" };
         updateJobStatusMutation.mutate({
@@ -60,6 +61,7 @@ const Recruiter = () => {
         });
     };
 
+    //Handler for rejecting application
     const handleRejectStatus = (id, recruiterId) => {
         const newStatus = { recruiterId, status: "rejected" };
         updateJobStatusMutation.mutate({
@@ -68,6 +70,8 @@ const Recruiter = () => {
         });
     };
 
+
+    //handler for viewing resume
     const handleResumeView = (drive) => {
         const newWindow = window.open(drive, "_blank");
         if (newWindow) {
@@ -77,15 +81,19 @@ const Recruiter = () => {
         }
     };
 
+    // Handler for search change
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
+    //filtering jobs based on position, username and status
     const filteredJobs = jobs?.filter((job) =>
         job?.jobId?.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job?.applicantId?.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job?.status.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+     // Handler for exporting accepted applicants to PDF
     const handleExportPDF = () => {
          
         const doc = new jsPDF();

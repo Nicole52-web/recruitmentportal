@@ -4,6 +4,7 @@ const Footer = () => {
   return (
     <>
       <footer className="relative z-10 bg-[#ebf6fc] pb-5 pt-20 dark:bg-dark lg:pt-[120px]">
+        {/* Container for footer content */}
         <div className="container max-w-6xl mx-auto">
           <div className="flex flex-wrap">
             <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
@@ -14,6 +15,7 @@ const Footer = () => {
                     alt="logo"
                     className="max-w-full dark:hidden"
                   />
+                  {/* Dark mode logo */}
                   <img
                     src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg"
                     alt="logo"

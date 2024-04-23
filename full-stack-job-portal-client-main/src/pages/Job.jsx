@@ -18,6 +18,7 @@ import Navbar from "../components/shared/Navbar";
 dayjs.extend(advancedFormat);
 
 const Job = () => {
+    // Getting job id from the route parameters
     const { id } = useParams();
     const {
         isLoading,
@@ -32,6 +33,8 @@ const Job = () => {
             ),
     });
 
+
+     // Formatting the job deadline date
     const date = dayjs(job?.jobDeadline).format("MMM Do, YYYY");
 
     if (isLoading) {
@@ -43,6 +46,8 @@ const Job = () => {
     // if (job) {
     //     console.log(job.result);
     // }
+
+     // Render the job details
     return (
         <>
             <Navbar />

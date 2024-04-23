@@ -12,10 +12,12 @@ const MyJobs = () => {
     return (
         <Wrapper>
             <div className="title-row">
+                {/* Displaying title based on user role */}
                 {user?.role === "recruiter" && "Manage Applications"}
                 {user?.role === "user" && "My Applications"}
                 <CiSquarePlus className="ml-1 text-xl md:text-2xl" />
             </div>
+             {/* Displaying different components based on user role */}
             {user?.role === "user" && <Applicant />}
             {user?.role === "recruiter" && <Recruiter />}
         </Wrapper>

@@ -28,6 +28,7 @@ import { SlGraph } from "react-icons/sl";
 
 const Stats = () => {
     const [isShowBarChart, setIsShowBarChart] = useState(false);
+    // Fetching data using react-query
     const { isPending, isError, data, error } = useQuery({
         queryKey: ["stats"],
         queryFn: () =>
@@ -37,8 +38,11 @@ const Stats = () => {
     });
 
     // Pi Chart Codes
+    // Constants for Pie Chart
     const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
     const RADIAN = Math.PI / 180;
+
+     // Function to render customized label for Pie Chart
     const renderCustomizedLabel = ({
         cx,
         cy,
@@ -76,6 +80,8 @@ const Stats = () => {
     if (data) {
         console.log(data);
     }
+
+    // Render charts
     return (
         <Wrapper>
             <div className="">

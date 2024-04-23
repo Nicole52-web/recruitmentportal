@@ -9,17 +9,22 @@ const StatusInterview = () => {
     useEffect(() => {
         const fetchInterviews = async () => {
             try {
+                 // Making a GET request to the server to fetch interviews data
                 const response = await axios.get('http://localhost:3000/api/v1/interview/statusinterviews', {
                     
                 });
                 console.log(response.data);
+                 // Updating the state with the fetched interviews data
                 setInterviews(response.data.interviews);
             } catch (error) {
                 console.error('Error fetching interviews', error);
             }
         };
+        // Calling the function to fetch interviews data
         fetchInterviews();
     }, []);
+
+    // Rendering the component
     return (
         <Wrapper>
             <div className="title-row">

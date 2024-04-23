@@ -14,6 +14,7 @@ const ScheduleInterview = ({job}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Check if an interview has already been scheduled
         try {
             const checkResponse = await axios.get(`http://localhost:3000/api/v1/interview/check`, {
             params: {
@@ -23,6 +24,7 @@ const ScheduleInterview = ({job}) => {
             },
         });
 
+          // If an interview has already been scheduled, show an error message
         if (checkResponse.data.exists) {
             Swal.fire({
                 icon: "error",
@@ -31,6 +33,7 @@ const ScheduleInterview = ({job}) => {
             });
             return;
         }
+        // Schedule the interview
             const response = await axios.post(`http://localhost:3000/api/v1/interview/schedule`, {
                 recruiterId: job.recruiterId,
                 applicantId: job.applicantId,
@@ -44,10 +47,12 @@ const ScheduleInterview = ({job}) => {
                 },
             });
 
+             // If there is a server error, throw an error
             if (response.status >= 500) {
                 throw new Error(`Server error: ${response.status}`);
             }
 
+            // Reset the date and time
             setDate('');
             setTime('');
             

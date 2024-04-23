@@ -15,6 +15,7 @@ const DashboardLayout = () => {
 
     const handleLogout = async () => {
         try {
+            // Making POST request to logout API
             const response = await axios.post(
                 "http://localhost:3000/api/v1/auth/logout",
                 { withCredentials: true }
@@ -36,6 +37,8 @@ const DashboardLayout = () => {
 
     // passing values
     const values = { handleLogout, showSidebar, setShowSidebar };
+    
+    // Returning the dashboard layout wrapped in the context provider
     return (
         <DashboardContext.Provider value={values}>
             <Wrapper>

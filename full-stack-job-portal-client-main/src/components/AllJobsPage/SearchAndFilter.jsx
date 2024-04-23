@@ -46,10 +46,13 @@ const SearchAndFilter = () => {
     return (
         <Wrapper>
             <form action="" className="form">
+                {/* Filter section */}
                 <div className="filter">
                     <div className="hidden">
                         <CiFilter />
                     </div>
+
+                    {/* Type filter */}
                     <div className="type-row">
                         <span className="text">Types</span>
                         <select
@@ -67,6 +70,8 @@ const SearchAndFilter = () => {
                             })}
                         </select>
                     </div>
+
+                    {/* Status filter */}
                     <div className="status-row">
                         <span className="text">Status</span>
                         <select
@@ -84,6 +89,8 @@ const SearchAndFilter = () => {
                             })}
                         </select>
                     </div>
+
+                    {/* Sort filter */}
                     <div className="status-row">
                         <span className="text">Sort By</span>
                         <select
@@ -103,6 +110,8 @@ const SearchAndFilter = () => {
                     </div>
                 </div>
 
+
+{/* Search section */}
                 <div className="search-row">
                     <input
                         type="text"

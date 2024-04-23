@@ -19,6 +19,8 @@ const Login = () => {
         formState: { errors },
     } = useForm();
 
+
+    // State for loading status
     const [isLoading, setIsLoading] = useState(false);
     let navigate = useNavigate();
     let location = useLocation();
@@ -28,6 +30,7 @@ const Login = () => {
         setIsLoading(true);
         
         try {
+            // Making a POST request to the login API
             const response = await axios.post(
                 "http://localhost:3000/api/v1/auth/login",
                 data,
@@ -59,6 +62,7 @@ const Login = () => {
         setIsLoading(false);
     };
 
+     // Rendering the login form
     return (
         <Wrapper>
             <div className="container">

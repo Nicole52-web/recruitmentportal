@@ -11,7 +11,9 @@ import ScheduleInterview from "./ScheduleInterview";
 const queryClient = new QueryClient();
 
 const InterviewSchedule = () => {
+    
     const [searchTerm, setSearchTerm] = useState("");
+    // Fetching jobs using react-query
     const {
         isPending,
         isError,
@@ -31,74 +33,21 @@ const InterviewSchedule = () => {
         },
     });
 
-    const updateJobStatusMutation = useMutation({
-        mutationFn: updateHandler,
-        onSuccess: (data, variable, context) => {
-            refetch();
-            Swal.fire({
-                icon: "success",
-                title: "Status Updated",
-                text: data?.message,
-            });
-        },
-        onError: (error, variables, context) => {
-            console.log(error);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: error?.response?.data,
-            });
-        },
-    });
+   
 
-    const handleAcceptStatus = (id, recruiterId) => {
-        const newStatus = { recruiterId, status: "accepted" };
-        updateJobStatusMutation.mutate({
-            body: newStatus,
-            url: `http://localhost:3000/api/v1/application/${id}`,
-        });
-    };
-
-    const handleRejectStatus = (id, recruiterId) => {
-        const newStatus = { recruiterId, status: "rejected" };
-        updateJobStatusMutation.mutate({
-            body: newStatus,
-            url: `http://localhost:3000/api/v1/application/${id}`,
-        });
-    };
-
-    const handleResumeView = (drive) => {
-        const newWindow = window.open(drive, "_blank");
-        if (newWindow) {
-            newWindow.focus();
-        } else {
-            alert("Please allow pop-ups for this site to open the PDF.");
-        }
-    };
-
+     // Handler for search change
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
+
+     // Filtering jobs based on search term
     const filteredJobs = jobs?.filter((job) =>
         job?.jobId?.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job?.applicantId?.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job?.status.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    const handleExportPDF = () => {
-        console.log("Exporting as PDF...");
-        exportTableToPDF("applications-table", "Applications_Report");
-    };
-
-    const handleExportCSV = () => {
-        console.log("Exporting as CSV...");
-        exportTableToCSV("applications-table", "Applications_Report");
-    };
-
-    const handleExportWord = () => {
-        console.log("Exporting as Word...");
-        exportTableToWord("applications-table", "Applications_Report");
-    }
+    
     if (isPending) {
         return <LoadingComTwo />;
     }
@@ -129,11 +78,7 @@ const InterviewSchedule = () => {
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
-            <div className="export-buttons">
-    {/* <button className="bg-blue-500 text-white rounded px-4 py-2 m-2" onClick={handleExportPDF}>Export as PDF</button>
-    <button className="bg-blue-500 text-white rounded px-4 py-2 m-2" onClick={handleExportCSV}>Export as CSV</button> */}
-    {/* <button className="bg-blue-500 text-white rounded px-4 py-2 m-2" onClick={handleExportWord}>Export as WORD</button> */}
-</div>
+   
                 <table className="table" id="applications-table">
                     <thead>
                         <tr>

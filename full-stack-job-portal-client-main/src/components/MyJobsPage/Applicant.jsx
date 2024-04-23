@@ -23,18 +23,22 @@ const Applicant = () => {
         },
     });
 
+     // If the query is still loading, render a loading component
     if (isPending) {
         return <LoadingComTwo />;
     }
 
+     // If the query encountered an error, render the error message
     if (isError) {
         return <h2 className="">{error?.message}</h2>;
     }
 
+    // If jobs data is available, log it to the console
     if (jobs) {
         console.log(jobs);
     }
 
+    // If no jobs are found, render a message indicating so
     if (!jobs?.length === 0) {
         return <h2 className="">No job found</h2>;
     }

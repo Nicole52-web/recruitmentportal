@@ -7,6 +7,8 @@ import { useDashboardContext } from "../../Layout/DashboardLayout";
 
 const DashboardNavbar = () => {
     const { showSidebar, setShowSidebar, handleLogout } = useDashboardContext();
+
+    // The component returns a navigation bar which includes a sidebar toggle button, a logo, and a logout button
     return (
         <Wrapper>
             <div className="nav-container">

@@ -5,6 +5,7 @@ import { useJobContext } from "../../context/JobContext";
 import styled from "styled-components";
 
 const PaginationCom = () => {
+    // Destructuring handleJobFetch and jobs from job context
     const { handleJobFetch, jobs } = useJobContext();
 
     const handlePageClick = (e) => {
@@ -13,6 +14,8 @@ const PaginationCom = () => {
         //     `User requested page number ${e.selected}, which is offset ${newOffset}`
         // );
         // setItemOffset(newOffset);
+
+        // Fetching jobs for the selected page
         handleJobFetch(
             `http://localhost:3000/api/v1/jobs?page=${
                 e.selected + 1
@@ -20,6 +23,8 @@ const PaginationCom = () => {
         );
     };
 
+
+     // Rendering the pagination component
     return (
         <Wrapper>
             <ReactPaginate

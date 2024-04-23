@@ -44,6 +44,7 @@ const Profile = () => {
                             </Link> */}
                         </div>
                     </div>
+                      {/* User information table */}
                     <table className="information-table">
                         <tbody>
                             <tr className="row">
