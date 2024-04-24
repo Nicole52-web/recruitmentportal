@@ -1,18 +1,18 @@
 import React from "react";
 
 const category = [
-  {id: 1,name: "Anesthesiologists",count: "45,904 Open Positions",},
-  { id: 2, name: "Surgeons", count: "50,364 Open Positions" },
-  { id: 3, name: "Gynecologists", count: "50,364 Open Positions" },
-  { id: 4, name: "Orthodontists", count: "50,364 Open Positions" },
-  { id: 5, name: "Software Developer", count: "50,364 Open Positions" },
-  { id: 6, name: "Data Scientist", count: "50,364 Open Positions" },
-  { id: 7, name: "Financial Manager", count: "50,364 Open Positions" },
-  { id: 8, name: "Management Analysis", count: "50,364 Open Positions" },
-  { id: 9, name: "IT Manager", count: "50,364 Open Positions" },
-  { id: 10, name: "Research Analysis", count: "50,364 Open Positions" },
-  { id: 11, name: "Maxillofacial Surgeons", count: "50,364 Open Positions" },
-  { id: 12, name: "IT Manager", count: "50,364 Open Positions" },
+  {id: 1,name: "Anesthesiologists",count: "400+ Open Positions",},
+  { id: 2, name: "Surgeons", count: "500+ Open Positions" },
+  { id: 3, name: "Gynecologists", count: "500+ Open Positions" },
+  { id: 4, name: "Orthodontists", count: "400+ Open Positions" },
+  { id: 5, name: "Software Developer", count: "500+ Open Positions" },
+  { id: 6, name: "Data Scientist", count: "400+ Open Positions" },
+  { id: 7, name: "Financial Manager", count: "500+ Open Positions" },
+  { id: 8, name: "Management Analysis", count: "500+ Open Positions" },
+  { id: 9, name: "IT Manager", count: "600+ Open Positions" },
+  { id: 10, name: "Research Analysis", count: "500+ Open Positions" },
+  { id: 11, name: "Maxillofacial Surgeons", count: "400+ Open Positions" },
+  { id: 12, name: "IT Manager", count: "500+ Open Positions" },
 ];
 
 const PopularCategory = () => {
