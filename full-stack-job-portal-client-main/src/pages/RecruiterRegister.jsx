@@ -25,7 +25,7 @@ const RecruiterRegister = () => {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        // password: A@1abcde
+        
         const { username, email, password, confirmPassword } = data;
 
         // Check if passwords match
